@@ -34,7 +34,7 @@ setkey(dictBrands, BrandName)
 setkey(data, Brand)
 data[dictBrands, Brand := GRBrandName]
 
-# Create subset which consists only segments we'll work with
+# Create subset which consists of only segments we'll work with
 df = data[, .(Items = sum(ItemsC), Value = sum(ValueC), Volume = sum(VolumeC)),
           by = .(Brand, PS2, PS3, PS, Company, Ynb, Mnb, Form, Additives)]
 
@@ -106,7 +106,7 @@ dftemp$Segment = paste0(dftemp$Segment, "_", dftemp$Company, "_", dftemp$Brand, 
 names(dftemp)[1] = "Join"
 dftemp = dftemp[,c(-2, -3, -4)]
 
-# Collect file is used also for preliminary check
+# Keep in mind: Collect file is used also for preliminary check
 collect = rbind(collect, dftemp)
 
 # Calculate number of columns
@@ -130,7 +130,7 @@ setcolorder(collect, c(1, (nc+2):(nc+6), 2:(nc/2+1), (nc+7):(nc+11), (nc/2+2):(n
 
 write.csv(collect, "collect.csv")
 
-# Join with GR file
+# Join with Global Report file
 final = collect[dictGR, on = "Join"]
 
 # Delete temporary columns
