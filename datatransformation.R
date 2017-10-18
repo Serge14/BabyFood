@@ -11,7 +11,7 @@ dictGR = fread("GRDcitionary.csv", stringsAsFactors = FALSE, data.table = TRUE)
 selection = read.csv("Selection.csv", stringsAsFactors = FALSE)
 data = fread("M2.csv", header = TRUE, stringsAsFactors = FALSE, data.table = TRUE)
 houses = fread("houses.csv", stringsAsFactors = FALSE, data.table = TRUE)
-names(data)[7:9] = c("PS0", "PS2", "PS3") # Rename because somebody have added spaces...
+names(data)[7:9] = c("PS0", "PS2", "PS3") # Rename because somebody has added spaces...
 
 # Transform to upper case since file consists of mixed letters' cases
 data$PS0 = toupper(data$PS0)
